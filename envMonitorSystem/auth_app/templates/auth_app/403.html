@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="page">
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Custom 403 Html page template</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static  %}
+    <meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="{% static 'css/403.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+</head>
+<body>
+
+<!-- partial:index.partial.html -->
+<div class="text-wrapper">
+    <div class="title" data-content="404">
+        403 - ACCESS DENIED
+    </div>
+
+    <div class="subtitle">
+        Oops, You don't have permission to access this page.
+    </div>
+    <div class="isi">
+         A web server may return a 403 Forbidden HTTP status code in response to a request from a client for a web page or resource to indicate that the server can be reached and understood the request, but refuses to take any further action. Status code 403 responses are the result of the web server being configured to deny access, for some reason, to the requested resource by the client.
+         </div>
+
+    <div class="buttons">
+        <a class="button" href="/">Go to homepage</a>
+    </div>
+</div>
+<!-- partial -->
+
+
+<!-- 中英文切换JS -->
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"-->
+<!--        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+<!--<script>-->
+<!--    $('[lang]').hide(); // hide all lang attributes on start.-->
+<!--    $('[lang="zh"]').show(); // show just zhrean text (you can change it)-->
+<!--    $('#lang-switch').change(function () { // put onchange event when user select option from select-->
+<!--        var lang = $(this).val(); // decide which language to display using switch case. The rest is obvious (i think)-->
+<!--        switch (lang) {-->
+<!--            case 'en':-->
+<!--                $('[lang]').hide();-->
+<!--                $('[lang="en"]').show();-->
+<!--                break;-->
+<!--            case 'zh':-->
+<!--                $('[lang]').hide();-->
+<!--                $('[lang="zh"]').show();-->
+<!--                break;-->
+<!--            default:-->
+<!--                $('[lang]').hide();-->
+<!--                $('[lang="zh"]').show();-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<div style="font-size: small; position: absolute; bottom: 10px; right: 10px;"> All Rights Reserved © 2021 by AGou-ops.
+</div>
+</body>
+</html>

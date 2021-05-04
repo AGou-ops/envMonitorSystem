@@ -1,0 +1,160 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <meta name="description" content="Login - Register Template">
+    <meta name="author" content="Lorenzo Angelino aka MrLolok">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="{% static 'js/layer.js' %}"></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+</head>
+
+<body>
+<div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
+
+
+<div class="topcorner">
+    <form>
+        <label for="lang-switch">
+            <span lang="en">Language</span>
+            <span lang="zh">页面语言</span>
+
+        </label>
+        <select id="lang-switch">
+            <option value="en">English</option>
+            <option value="zh" selected>中文</option>
+        </select>
+    </form>
+</div>
+
+
+<div id="container-register">
+    <div id="title">
+        {# <i class="material-icons lock">lock</i>#}
+        <span lang="en"> Register</span>
+        <span lang="zh"> 账户注册</span>
+    </div>
+
+    <form class="form" action="{% url 'auth_app:register' %}" method="post">
+        {% csrf_token %}
+
+        <div class="clearfix"></div>
+
+        <div class="input">
+            <div class="input-addon">
+                <i class="material-icons">face</i>
+            </div>
+            <input title="请输入您的用户名" id="id_username" name="username" maxlength="150" autocapitalize="none"
+                   placeholder="Username"
+                   type="text" required class="validate" autocomplete="off">
+
+        </div>
+
+        <div class="input">
+            <div class="input-addon">
+                <i class="material-icons">email</i>
+            </div>
+            <input title="请输入您的电子邮件" type="email" name="email" maxlength="254" placeholder="E-mail" id="id_email"
+                   autocomplete="off"
+                   required class="validate">
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="input">
+            <div class="input-addon">
+                <i class="material-icons">vpn_key</i>
+            </div>
+            <input title="请输入您的密码" id="id_password1" placeholder="Password" type="password" name="password1" required
+                   class="validate"
+                   autocomplete="new-password"/>
+        </div>
+
+        <div class="input">
+            <div class="input-addon">
+                <i class="material-icons">vpn_key</i>
+            </div>
+            <input title="请再次输入您的密码" id="id_password2" placeholder=" Re-input your Password" type="password"
+                   name="password2" required
+                   class="validate"
+                   autocomplete="new-password"/>
+        </div>
+
+        <div class="remember-me">
+            <input type="checkbox">
+            <span style="color: #DDD" lang="en">I accept Terms of Service</span>
+            <span style="color: #DDD" lang="zh">我接受隐私协议</span>
+        </div>
+
+        {% for field in form %}
+        {# {{ field.label_tag }}#}
+        {# {{ field }}#}
+        {{ field.errors }}
+        {# {% if field.help_text %}#}
+        {# <p class="help text-small text-muted">{{ field.help_text|safe }}</p>#}
+        {# {% endif %}#}
+        {% endfor %}
+        <span lang="en"><input type="submit" value="Register" autofocus/></span>
+        <span lang="zh"><input type="submit" value="注册【ENTER】" autofocus/></span>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+
+    <div class="privacy">
+        <span lang="en"> <a href="javascript:;" id="en-privacy">Privacy Policy</a></span>
+        <span lang="zh"> <a href="javascript:;" id="zh-privacy">隐私策略</a></span>
+    </div>
+
+
+    <div class="register">
+        <span lang="en">Do you already have an account?</span>
+        <span lang="zh">已有账户？</span>
+        <a href="#">
+            <a href="{% url 'login' %}"> <span lang="en"><button id="register-link">Log In here</button></span></a>
+            <a href="{% url 'login' %}"> <span lang="zh"> <button id="register-link">点击登录</button> </span></a>
+        </a>
+    </div>
+</div>
+
+
+<script src="{% static 'js/base.js' %}"></script>
+
+<!-- 中英文切换JS -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $('[lang]').hide(); // hide all lang attributes on start.
+    $('[lang="zh"]').show(); // show just zhrean text (you can change it)
+    $('#lang-switch').change(function () { // put onchange event when user select option from select
+        var lang = $(this).val(); // decide which language to display using switch case. The rest is obvious (i think)
+        switch (lang) {
+            case 'en':
+                $('[lang]').hide();
+                $('[lang="en"]').show();
+                break;
+            case 'zh':
+                $('[lang]').hide();
+                $('[lang="zh"]').show();
+                break;
+            default:
+                $('[lang]').hide();
+                $('[lang="zh"]').show();
+        }
+    });
+</script>
+
+<div style="font-size: small; position: absolute; bottom: 10px; right: 10px;"> All Rights Reserved © 2021 by AGou-ops.
+</div>
+
+</body>
+
+</html>
