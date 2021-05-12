@@ -131,6 +131,11 @@ AUTHENTICATION_BACKENDS = (
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/core_app'
 LOGIN_URL = '/'
+FORBIDDEN = '/core_app/403.html'
+
+# solve "Refused to display 'http://127.0.0.1:8000/' in a frame because it set 'X-Frame-Options' to 'deny'."
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = True

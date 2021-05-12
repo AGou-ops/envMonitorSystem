@@ -2,14 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>环境监测系统</title>
+    <title class="lang" key="ems">Environmental Monitoring System</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<!--    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>-->
+    <script src="https://kit.fontawesome.com/b72502ef5c.js" crossorigin="anonymous"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="{% static 'js/layer.js' %}"></script>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
 </head>
 <body>
+<style>
+    .iframe-container {
+        overflow: hidden;
+        padding-top: 100%;
+        position: relative;
+    }
+
+    .iframe-container iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+</style>
+
+
 <!-- partial:index.partial.html -->
 <nav class="mnb navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -28,22 +49,21 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"> 语言<span class="caret"></span></a>
+                       aria-expanded="false"> 语言[Lang]<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/core_app">en</a></li>
-                        <li><a href="/core_app">zh</a></li>
-
+                        <li><a class="translate" id="zh">中文</a></li>
+                        <li><a class="translate" id="en">English</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Draude Oba <span class="caret"></span></a>
+                       aria-expanded="false">{{ user.username }}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Upgrade</a></li>
                         <li><a href="#">Help</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/auth_app/logout">Logout</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="fa fa-bell-o"></i></a></li>
@@ -63,9 +83,7 @@
             <div class="brand-wrapper">
                 <!-- Brand -->
                 <div class="brand-name-wrapper">
-                    <a class="navbar-brand" href="/core_app/index.html">
-                        环境监测系统
-                    </a>
+                    <a class="navbar-brand lang" href="/core_app/index.html" key="ems"></a>
                 </div>
 
             </div>
@@ -76,9 +94,13 @@
         <div class="side-menu-container">
             <ul class="nav navbar-nav">
 
-                <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fa fa-puzzle-piece"></i> Components</a></li>
-                <li><a href="#"><i class="fa fa-heart"></i> Extras</a></li>
+                <li class="active">&nbsp;&nbsp;&nbsp;<i class="fa fa-dashboard"><a class="lang" href="./main_module.html" target="iframe-container" key="Dashboard">Dashboard</a></i></li></br></br>
+                <li class="active">&nbsp;&nbsp;&nbsp;<i class="fab fa-watchman-monitoring"><a class="lang" href="./typhoon_module.html" target="iframe-container" key="typhoon" style="font-weight: bold">typhoon</a></i></li></br></br>
+                <li class="active">&nbsp;&nbsp;&nbsp;<i class="fas fa-cloud-showers-heavy"><a class="lang" href="./rain_module.html" target="iframe-container" key="rain">rain</a></i></li></br></br>
+                <li class="active">&nbsp;&nbsp;&nbsp;<i class="fa fa-puzzle-piece"><a class="lang" href="./basic_module.html" target="iframe-container" key="basic">basic</a></i></li></br></br>
+                <hr>
+<!--                <li><a href="#"><i class="fa fa-puzzle-piece"></i> Components</a></li>-->
+<!--                <li><a href="#"><i class="fa fa-heart"></i> Extras</a></li>-->
 
                 <!-- Dropdown-->
                 <li class="panel panel-default" id="dropdown">
@@ -122,21 +144,16 @@
 </div>
 <!--main content wrapper-->
 <div class="mcw">
-    <!--navigation here-->
-    <!--main content view-->
-    <div class="cv">
-        <div>
-            <div class="inbox">
-                <div class="inbox-sb">
-                </div>
-            </div>
-        </div>
+    <div class="iframe-container">
+        <iframe name="iframe-container" src="https://www.baidu.com"></iframe>
     </div>
+
 </div>
-<!-- partial -->
+
 <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/lang.js' %}"></script>
 
 </body>
 </html>
