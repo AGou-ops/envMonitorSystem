@@ -19,7 +19,7 @@
 
     $(document).ready(function() {
         // The default language is English
-        var lang = "en";
+        var lang = "zh";
         $(".lang").each(function(index, element) {
             $(this).text(arrLang[lang][$(this).attr("key")]);
         });
