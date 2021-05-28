@@ -11,6 +11,8 @@
     <script src="{% static 'libs/toastr.min.js' %}"></script>
     <script src="{% static 'libs/moment.min.js' %}"></script>
     <script src="{% static 'libs/FileSaver.min.js' %}"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.4.0/layer.js"></script>
     <style>
         .operate {
             padding: 30px;
@@ -24,14 +26,46 @@
 
 <body>
 <div class="operate">
-    <label for="">&nbsp;&nbsp;&nbsp;未来雨水周期：</label>
+    <iframe width="800" height="150" frameborder="0" scrolling="no" hspace="0"
+            src="https://i.tianqi.com/?c=code&a=getcode&id=48&num=6&icon=1"></iframe>
+    </br><label for="">&nbsp;&nbsp;&nbsp;未来雨水周期：</label>
+
     <button class="rain-btn" data-hour="24">24小时</button>
     <button class="rain-btn" data-hour="48">48小时</button>
     <button class="rain-btn" data-hour="72">72小时</button>
-    <button id="export-png" class="btn btn-default">下载地图</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前时间为：<span
+        id="show"></span>
 </div>
 <div id="map" style="width:100%;height: 700px;"></div>
 <script type="text/javascript" src="{% static 'js/rainLayer_module/rain.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/rainLayer_module/app.js' %}"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var show = document.getElementById("show");
+        setInterval(function () {
+            var time = new Date();   // 程序计时的月从0开始取值后+1
+            var m = time.getMonth() + 1;
+            var t = time.getFullYear() + "-" + m + "-"
+                + time.getDate() + " " + time.getHours() + ":"
+                + time.getMinutes() + ":" + time.getSeconds();
+            show.innerHTML = t;
+        }, 1000);
+    };
+
+                     layer.open({
+  type: 2,
+  title: false,
+  closeBtn: 0, //不显示关闭按钮
+  shade: [0],
+  area: ['346px', '67px'],
+  offset: ['750px', '800px'],
+  time: 100000,
+  anim: 2,
+  shadeClose: true,
+  // zIndex: 9,
+  content: ['https://z3.ax1x.com/2021/05/28/2FWiXn.jpg', 'no'], //iframe的url，no代表不显示滚动条
+});
+</script>
 </body>
 </html>

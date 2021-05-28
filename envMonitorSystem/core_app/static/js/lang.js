@@ -1,19 +1,17 @@
 (function(){
     var arrLang = {
         "en": {
-            "Dashboard": "Dashboard",
+            "Dashboard": "Cimate",
             "ems": "EMS",
             "typhoon": "Typhoon",
-            "rain": "Rain & Cloud",
-            "basic": "Basic",
+            "rain": "Weather & Rain",
 
         },
         "zh": {
-            "Dashboard": "面板",
+            "Dashboard": "气温气压湿度风向",
             "ems": "环境信息监测系统",
-            "typhoon": "台风",
-            "rain": "雨水和云图",
-            "basic": "基础",
+            "typhoon": "台风路径查询",
+            "rain": "天气预报及雨水预测",
         }
     };
 
